@@ -207,8 +207,18 @@ function App() {
           </button>
 
           <div className="bottom-nav">
-            <button className="nav-btn">🏠 Home</button>
-            <button className="nav-btn">⇄ Activity</button>
+              🏠 Home
+</button>
+
+<button className="nav-btn">
+  ⇄ Activity
+</button><button className="nav-btn" onClick={() => setScreen("home")}>
+  🏠 Home
+</button>
+
+<button className="nav-btn" onClick={() => setShowHistory(true)}>
+  ⇄ Activity
+</button>>
             <button className="nav-btn">🎁 Referrals</button>
           </div>
 
