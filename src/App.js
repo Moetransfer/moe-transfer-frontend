@@ -206,21 +206,22 @@ function App() {
             SEND
           </button>
 
-          <div className="bottom-nav">
-              🏠 Home
-</button>
+        <div className="bottom-nav">
+  <button className="nav-btn">
+    🏠 Home
+  </button>
 
-<button className="nav-btn">
-  ⇄ Activity
-</button><button className="nav-btn" onClick={() => setScreen("home")}>
-  🏠 Home
-</button>
+  <button
+    className="nav-btn"
+    onClick={() => setScreen("history")}
+  >
+    ⇄ Activity
+  </button>
 
-<button className="nav-btn" onClick={() => setShowHistory(true)}>
-  ⇄ Activity
-</button>>
-            <button className="nav-btn">🎁 Referrals</button>
-          </div>
+  <button className="nav-btn">
+    🎁 Referrals
+  </button>
+</div>
 
           <button className="gray-btn" onClick={logout}>Logout</button>
         </div>
