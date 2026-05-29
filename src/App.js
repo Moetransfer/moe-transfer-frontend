@@ -211,7 +211,7 @@ function App() {
     🏠 Home
   </button>
 
-  <button className="nav-btn" onClick={() => alert("Activity page coming soon")}>
+  <button className="nav-btn" onClick={() => setScreen("home")}>
     ⇄ Activity
   </button>
 
