@@ -211,11 +211,11 @@ function App() {
     🏠 Home
   </button>
 
-  <button className="nav-btn" onClick={() => setScreen("home")}>
+  <button className="nav-btn" onClick={() => alert("Activity page coming soon")}>
     ⇄ Activity
   </button>
 
-  <button className="nav-btn">
+  <button className="nav-btn" onClick={() => alert("Referrals coming soon")}>
     🎁 Referrals
   </button>
 </div>
