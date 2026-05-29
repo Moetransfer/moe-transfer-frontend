@@ -206,15 +206,12 @@ function App() {
             SEND
           </button>
 
-        <div className="bottom-nav">
-  <button className="nav-btn">
+       <div className="bottom-nav">
+  <button className="nav-btn" onClick={() => setScreen("home")}>
     🏠 Home
   </button>
 
-  <button
-    className="nav-btn"
-    onClick={() => setScreen("history")}
-  >
+  <button className="nav-btn" onClick={() => alert("Activity page coming soon")}>
     ⇄ Activity
   </button>
 
