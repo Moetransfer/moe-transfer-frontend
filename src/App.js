@@ -14,6 +14,7 @@ function App() {
   const [recipient, setRecipient] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("");
   const [lastTransfer, setLastTransfer] = useState(null);
+const [transfers, setTransfers] = useState([]);
 
   const [newRecipientName, setNewRecipientName] = useState("");
   const [newRecipientAccount, setNewRecipientAccount] = useState("");
@@ -236,12 +237,24 @@ if (screen === "activity") {
           className="yellow-btn"
           onClick={async () => {
             const res = await fetch("https://moe-transfer-backend-1.onrender.com/transfers");
-            const data = await res.json();
-            alert("Transfers found: " + data.length);
+           const data = await res.json();
+setTransfers(data);
           }}
         >
           Load Transfer History
         </button>
+{transfers.map((t) => (
+  <div key={t.id} className="recipient-item">
+    <div>
+      <div className="recipient-name">
+        {t.recipientname}
+      </div>
+      <div className="recipient-bank">
+        {t.amount} {t.symbol} • {t.status}
+      </div>
+    </div>
+  </div>
+))}
       </div>
     </div>
   );
