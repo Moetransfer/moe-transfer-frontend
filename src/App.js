@@ -232,12 +232,16 @@ if (screen === "activity") {
         <button className="small-back" onClick={() => setScreen("home")}>‹</button>
         <h1 className="title">Activity</h1>
 
-        <div className="recipient-item">
-          <div>
-            <div className="recipient-name">Transfer history coming next</div>
-            <div className="recipient-bank">We will connect this to PostgreSQL now</div>
-          </div>
-        </div>
+        <button
+          className="yellow-btn"
+          onClick={async () => {
+            const res = await fetch("https://moe-transfer-backend-1.onrender.com/transfers");
+            const data = await res.json();
+            alert("Transfers found: " + data.length);
+          }}
+        >
+          Load Transfer History
+        </button>
       </div>
     </div>
   );
