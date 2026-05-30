@@ -211,7 +211,7 @@ function App() {
     🏠 Home
   </button>
 
-  <button className="nav-btn" onClick={() => setScreen("recipients")}>
+  <button className="nav-btn" onClick={() => setScreen("activity")}>
     ⇄ Activity
   </button>
 
@@ -225,7 +225,23 @@ function App() {
       </div>
     );
   }
+if (screen === "activity") {
+  return (
+    <div className="app">
+      <div className="card">
+        <button className="small-back" onClick={() => setScreen("home")}>‹</button>
+        <h1 className="title">Activity</h1>
 
+        <div className="recipient-item">
+          <div>
+            <div className="recipient-name">Transfer history coming next</div>
+            <div className="recipient-bank">We will connect this to PostgreSQL now</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
   if (screen === "recipients") {
     return (
       <div className="app">
