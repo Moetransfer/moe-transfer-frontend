@@ -244,7 +244,7 @@ setTransfers(data);
           Load Transfer History
         </button>
 {transfers.map((t) => (
-  <div key={t.id} className="recipient-item">
+ <div key={t.id} className="recipient-item" onClick={() => { setLastTransfer(t); setScreen("receipt"); }}>
     <div>
       <div className="recipient-name">
         {t.recipientname}
