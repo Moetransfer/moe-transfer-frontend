@@ -396,15 +396,9 @@ setTransfers(data);
           <h1 className="success-title">Transfer Created ✅</h1>
 
           <div className="summary-box">
-            <div className="recipient-name">{lastTransfer.receiverName}</div><p className="summary-label">Recipient</p>
+            <p className="summary-label">Recipient</p>
             <div className="recipient-name">{lastTransfer.receiverName}</div>
-            
-            <p className="summary-label">Bank</p>
-<div className="summary-value">{lastTransfer.bankName}</div>
 
-<p className="summary-label">Account Number</p>
-<div className="summary-value">{lastTransfer.accountNumber}</div>  
-          
             <p className="summary-label">You sent</p>
             <div className="summary-value">€{lastTransfer.amount}</div>
 
