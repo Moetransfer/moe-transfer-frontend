@@ -247,11 +247,12 @@ setTransfers(data);
  <div key={t.id} className="recipient-item" onClick={() => { setLastTransfer(t); setScreen("receipt"); }}>
     <div>
       <div className="recipient-name">
-        {t.recipientname}
-      </div>
-      <div className="recipient-bank">
-        {t.amount} {t.symbol} • {t.status}
-      </div>
+  {t.recipientname || t.recipientName || t.receiverName || "Unknown Recipient"}
+</div>
+
+<div className="recipient-bank">
+  {t.amount} {t.symbol} • {t.status}
+</div>
     </div>
   </div>
 ))}
