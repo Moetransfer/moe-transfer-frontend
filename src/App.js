@@ -159,7 +159,8 @@ setTimeout(() => {
             <input className="input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
             <button className="yellow-btn" type="submit">
-              {authMode === "login" ? "Login" : "Create Account"}
+     
+         {authMode === "login" ? "Login" : "Create Account"}
             </button>
           </form>
 
@@ -439,7 +440,7 @@ if (screen === "processing") {
     </div>
   );
 }
-  if (screen === "receipt") {
+    if (screen === "receipt") {
     return (
       <div className="app">
         <div className="card">
@@ -474,8 +475,26 @@ if (screen === "processing") {
 <div className="summary-value">{lastTransfer.time}</div>
           </div>
 
-          <button className="yellow-btn" onClick={() => setScreen("home")}>Send Again</button>
-          <button className="gray-btn" onClick={logout}>Logout</button>
+         <button
+  className="yellow-btn"
+  onClick={() => window.print()}
+>
+  📄 Download Receipt
+</button>
+
+<button
+  className="yellow-btn"
+  onClick={() => setScreen("home")}
+>
+  Send Again
+</button>
+
+<button
+  className="gray-btn"
+  onClick={logout}
+>
+  Logout
+</button>
         </div>
       </div>
     );
