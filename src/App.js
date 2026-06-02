@@ -415,8 +415,14 @@ setTransfers(data);
             <p className="summary-label">Status</p>
             <div className="recipient-name">{lastTransfer.status}</div>
 
-            <p className="summary-label">Reference</p>
+            <div className="reference">{lastTransfer.reference}</div><p className="summary-label">Reference</p>
             <div className="reference">{lastTransfer.reference}</div>
+            
+            <p className="summary-label">Date</p>
+<div className="summary-value">{lastTransfer.date}</div>
+
+<p className="summary-label">Time</p>
+<div className="summary-value">{lastTransfer.time}</div>
           </div>
 
           <button className="yellow-btn" onClick={() => setScreen("home")}>Send Again</button>
