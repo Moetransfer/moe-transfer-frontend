@@ -127,7 +127,11 @@ const [transfers, setTransfers] = useState([]);
     }
 
     setLastTransfer(transaction);
-    setScreen("receipt");
+    setScreen("processing");
+
+setTimeout(() => {
+  setScreen("receipt");
+}, 3000);
   };
 
   const logout = () => {
@@ -389,7 +393,52 @@ setTransfers(data);
       </div>
     );
   }
+if (screen === "processing") {
+  return (
+    <div className="app">
+      <div className="card">
 
+        <h1 className="success-title">
+          Transfer Processing ⏳
+        </h1>
+
+        <div className="summary-box">
+
+          <p className="summary-label">
+            Recipient
+          </p>
+
+          <div className="summary-value">
+            {lastTransfer.receiverName}
+          </div>
+
+          <p className="summary-label">
+            Receiver gets
+          </p>
+
+          <div className="summary-value">
+            {lastTransfer.symbol}
+            {lastTransfer.received}
+          </div>
+
+          <p className="summary-label">
+            Reference
+          </p>
+
+          <div className="reference">
+            {lastTransfer.reference}
+          </div>
+
+        </div>
+
+        <p style={{ textAlign: "center" }}>
+          Please wait while we process your transfer...
+        </p>
+
+      </div>
+    </div>
+  );
+}
   if (screen === "receipt") {
     return (
       <div className="app">
