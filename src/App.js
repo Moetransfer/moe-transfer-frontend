@@ -15,7 +15,7 @@ function App() {
   const [paymentMethod, setPaymentMethod] = useState("");
   const [lastTransfer, setLastTransfer] = useState(null);
 const [transfers, setTransfers] = useState([]);
-
+  const [searchTerm, setSearchTerm] = useState("");
   const [newRecipientName, setNewRecipientName] = useState("");
   const [newRecipientAccount, setNewRecipientAccount] = useState("");
   const [newRecipientBank, setNewRecipientBank] = useState("");
@@ -237,7 +237,12 @@ if (screen === "activity") {
       <div className="card">
         <button className="small-back" onClick={() => setScreen("home")}>‹</button>
         <h1 className="title">Activity</h1>
-
+       <input
+  className="input"
+  placeholder="Search by recipient name"
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+/>
         <button
           className="yellow-btn"
           onClick={async () => {
@@ -248,7 +253,13 @@ setTransfers(data);
         >
           Load Transfer History
         </button>
-{transfers.map((t) => (
+ {transfers
+  .filter((t) =>
+    (t.receiver_name || t.bank_name || t.recipientname || t.recipientName || t.receiverName || "")
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+  )
+  .map((t) => (
  <div key={t.id} className="recipient-item" onClick={() => { setLastTransfer(t); setScreen("receipt"); }}>
     <div>
       <div className="recipient-name">
