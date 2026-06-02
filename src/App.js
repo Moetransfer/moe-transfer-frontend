@@ -129,8 +129,8 @@ const [transfers, setTransfers] = useState([]);
     setLastTransfer(transaction);
     setScreen("processing");
 
-setTimeout(() => {
-  setScreen("receipt");
+  setTimeout(() => {
+  setScreen("delivered");
 }, 3000);
   };
 
@@ -436,6 +436,37 @@ if (screen === "processing") {
           Please wait while we process your transfer...
         </p>
 
+      </div>
+    </div>
+  );
+}
+if (screen === "delivered") {
+  return (
+    <div className="app">
+      <div className="card">
+        <h1 className="success-title">Transfer Successful ✅</h1>
+
+        <p style={{ textAlign: "center", fontSize: "22px" }}>
+          {lastTransfer.receiverName} has now received your transfer.
+        </p>
+
+        <div className="summary-box">
+          <p className="summary-label">Receiver gets</p>
+          <div className="summary-value">
+            {lastTransfer.symbol}{lastTransfer.received}
+          </div>
+
+          <p className="summary-label">Transfer ID</p>
+          <div className="reference">{lastTransfer.reference}</div>
+        </div>
+
+        <button className="yellow-btn" onClick={() => setScreen("receipt")}>
+          View Receipt
+        </button>
+
+        <button className="gray-btn" onClick={() => setScreen("home")}>
+          OK
+        </button>
       </div>
     </div>
   );
