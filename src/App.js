@@ -126,10 +126,34 @@ const [transfers, setTransfers] = useState([]);
       return;
     }
 
-    setLastTransfer(transaction);
-    setScreen("processing");
+   if (paymentMethod === "card" || paymentMethod === "apple") {
 
-  setTimeout(() => {
+  const stripeRes = await fetch(
+    "https://moe-transfer-backend-1.onrender.com/create-checkout-session",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        amount: Number(amount),
+        recipient: recipient?.name,
+      }),
+    }
+  );
+
+  const stripeData = await stripeRes.json();
+
+  if (stripeData.url) {
+    window.location.href = stripeData.url;
+    return;
+  }
+}
+
+setLastTransfer(transaction);
+setScreen("processing");
+
+setTimeout(() => {
   setScreen("delivered");
 }, 3000);
   };
