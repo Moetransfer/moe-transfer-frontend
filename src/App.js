@@ -201,7 +201,7 @@ const [transfers, setTransfers] = useState([]);
 
           <button
             className="yellow-btn"
-            onClick={() => {
+             onClick={() => {
               if (!amount || Number(amount) <= 0) {
                 alert("Enter amount first");
                 return;
