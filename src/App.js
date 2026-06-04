@@ -39,12 +39,15 @@ if (payment === "success") {
   }
 
   setScreen("delivered");
+  window.history.replaceState({}, document.title, window.location.pathname);
 }
 
-  if (payment === "cancel") {
-    alert("Payment cancelled");
-    setScreen("confirm");
-  }
+if (payment === "cancel") {
+  alert("Payment cancelled");
+  setScreen("confirm");
+  window.history.replaceState({}, document.title, window.location.pathname);
+}
+
 }, []);
   const rate = 1601;
   const converted = amount ? (Number(amount) * rate).toFixed(2) : "0.00";
