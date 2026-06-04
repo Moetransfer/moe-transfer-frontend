@@ -82,11 +82,7 @@ if (payment === "cancel") {
   const rate = 1601;
   const converted = amount ? (Number(amount) * rate).toFixed(2) : "0.00";
 
-  const [recipients, setRecipients] = useState([
-    { initials: "MT", name: "MOCHI TINA", account: "2023128365", bank: "Kuda Bank" },
-    { initials: "AK", name: "ABDULLAHI KABIRU", account: "9131574804", bank: "Moniepoint Microfinance Bank" },
-    { initials: "TM", name: "TINA MOCHI", account: "0088497816", bank: "Access Bank Nigeria" },
-    { initials: "EM", name: "EMMANUEL MOCHI", account: "4235229076", bank: "Zenith Bank International" },
+  const [recipients, setRecipients] = useState([]);
   ]);
 
   const signup = async (e) => {
@@ -105,7 +101,10 @@ if (payment === "cancel") {
       return;
     }
 
-    setUser(data.user);
+    localStorage.setItem("token", data.token);
+localStorage.setItem("moeUser", JSON.stringify(data.user));
+setRecipients([]);
+setUser(data.user);
   };
 
   const login = async (e) => {
