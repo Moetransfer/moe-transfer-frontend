@@ -343,7 +343,11 @@ if (screen === "admin") {
   return (
     <div className="app">
       <div className="card">
-        <button className="small-back" onClick={() => setScreen("home")}>
+
+        <button
+          className="small-back"
+          onClick={() => setScreen("home")}
+        >
           ← Back
         </button>
 
@@ -351,14 +355,44 @@ if (screen === "admin") {
 
         <div className="recipient-item">
           <div>
-            <div className="recipient-name">Admin access working ✅</div>
-            <div className="recipient-bank">Welcome DJ Moe</div>
+            <div className="recipient-name">
+              Total Users
+            </div>
+            <div className="recipient-bank">
+              Coming Soon
+            </div>
           </div>
         </div>
 
-        <button className="yellow-btn" onClick={() => setScreen("home")}>
+        <div className="recipient-item">
+          <div>
+            <div className="recipient-name">
+              Total Transfers
+            </div>
+            <div className="recipient-bank">
+              Coming Soon
+            </div>
+          </div>
+        </div>
+
+        <div className="recipient-item">
+          <div>
+            <div className="recipient-name">
+              Transfer Volume
+            </div>
+            <div className="recipient-bank">
+              Coming Soon
+            </div>
+          </div>
+        </div>
+
+        <button
+          className="yellow-btn"
+          onClick={() => setScreen("home")}
+        >
           Back Home
         </button>
+
       </div>
     </div>
   );
