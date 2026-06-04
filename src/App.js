@@ -403,7 +403,7 @@ if (screen === "admin") {
               Transfer Volume
             </div>
             <div className="recipient-bank">
-              Coming Soon
+             {adminStats?.volume || 0}
             </div>
           </div>
         </div>
