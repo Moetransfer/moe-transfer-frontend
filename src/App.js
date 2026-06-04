@@ -320,6 +320,15 @@ setTimeout(() => {
   <button className="nav-btn" onClick={() => setScreen("home")}>
     🎁 Referrals
   </button>
+
+{user?.email === "djmoe20@yahoo.com" && (
+  <button
+    className="nav-btn"
+    onClick={() => setScreen("admin")}
+  >
+    👑 Admin
+  </button>
+)}
 </div>
 
           <button className="gray-btn" onClick={logout}>Logout</button>
