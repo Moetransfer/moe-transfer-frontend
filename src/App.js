@@ -303,9 +303,24 @@ if (screen === "activity") {
         <button
           className="yellow-btn"
           onClick={async () => {
-            const res = await fetch("https://moe-transfer-backend-1.onrender.com/transfers");
-           const data = await res.json();
-setTransfers(data);
+          const token = localStorage.getItem("token");
+
+const res = await fetch(
+  "https://moe-transfer-backend-1.onrender.com/transfers",
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
+
+const data = await res.json();
+
+if (Array.isArray(data)) {
+  setTransfers(data);
+} else {
+  setTransfers([]);
+}
           }}
         >
           Load Transfer History
