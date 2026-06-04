@@ -325,8 +325,9 @@ if (Array.isArray(data)) {
         >
           Load Transfer History
         </button>
- {transfers
-  .filter((t) =>
+   {Array.isArray(transfers) &&
+transfers
+.filter((t) =>
     (t.receiver_name || t.bank_name || t.recipientname || t.recipientName || t.receiverName || "")
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
