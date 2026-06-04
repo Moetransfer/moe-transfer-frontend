@@ -186,8 +186,6 @@ setTimeout(() => {
 }, 3000);
   };
 
-    setUser(null);
-};
 const logout = () => {
   localStorage.removeItem("moeUser");
   localStorage.removeItem("pendingTransfer");
