@@ -14,8 +14,8 @@ function App() {
   const [recipient, setRecipient] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("");
   const [lastTransfer, setLastTransfer] = useState(null);
-  const [recipients, setRecipients] = useState([]);
-const [transfers, setTransfers] = useState([]);
+  const [transfers, setTransfers] = useState([]);
+  const [recipients, setRecipients] = useState([]);  
   const [searchTerm, setSearchTerm] = useState("");
   const [newRecipientName, setNewRecipientName] = useState("");
   const [newRecipientAccount, setNewRecipientAccount] = useState("");
@@ -24,9 +24,6 @@ const [transfers, setTransfers] = useState([]);
 useEffect(() => {
   const savedUser = localStorage.getItem("moeUser");
 
-      setUser(JSON.parse(savedUser));
-    setScreen("home");
-}
  if (savedUser) {
     const userData = JSON.parse(savedUser);
 
@@ -82,9 +79,6 @@ if (payment === "cancel") {
   const rate = 1601;
   const converted = amount ? (Number(amount) * rate).toFixed(2) : "0.00";
 
-  const [recipients, setRecipients] = useState([]);
-  ]);
-
   const signup = async (e) => {
     e.preventDefault();
 
@@ -129,7 +123,7 @@ localStorage.setItem("moeUser", JSON.stringify(data.user));
 setUser(data.user);
   };
 
-  const addRecipient = () => {
+  const addRecipient = async () => {
     if (!newRecipientName || !newRecipientAccount || !newRecipientBank) {
       alert("Fill all recipient details");
       return;
