@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
@@ -19,7 +19,14 @@ const [transfers, setTransfers] = useState([]);
   const [newRecipientName, setNewRecipientName] = useState("");
   const [newRecipientAccount, setNewRecipientAccount] = useState("");
   const [newRecipientBank, setNewRecipientBank] = useState("");
+useEffect(() => {
+  const savedUser = localStorage.getItem("moeUser");
 
+  if (savedUser) {
+    setUser(JSON.parse(savedUser));
+    setScreen("home");
+  }
+}, []);
   const rate = 1601;
   const converted = amount ? (Number(amount) * rate).toFixed(2) : "0.00";
 
@@ -66,6 +73,7 @@ const [transfers, setTransfers] = useState([]);
     }
 
     setUser(data.user);
+    localStorage.setItem("moeUser", JSON.stringify(data.user));
   };
 
   const addRecipient = () => {
@@ -159,6 +167,7 @@ setTimeout(() => {
   };
 
   const logout = () => {
+    localStorage.removeItem("moeUser");
     setUser(null);
     setScreen("home");
     setAmount("");
