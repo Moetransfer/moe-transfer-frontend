@@ -19,12 +19,25 @@ const [transfers, setTransfers] = useState([]);
   const [newRecipientName, setNewRecipientName] = useState("");
   const [newRecipientAccount, setNewRecipientAccount] = useState("");
   const [newRecipientBank, setNewRecipientBank] = useState("");
+ 
 useEffect(() => {
   const savedUser = localStorage.getItem("moeUser");
 
   if (savedUser) {
     setUser(JSON.parse(savedUser));
     setScreen("home");
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const payment = params.get("payment");
+
+  if (payment === "success") {
+    setScreen("delivered");
+  }
+
+  if (payment === "cancel") {
+    alert("Payment cancelled");
+    setScreen("confirm");
   }
 }, []);
   const rate = 1601;
