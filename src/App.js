@@ -186,15 +186,15 @@ setTimeout(() => {
 }, 3000);
   };
 
-  const logout = () => {
-    localStorage.removeItem("moeUser");
     setUser(null);
-    setScreen("home");
-    setAmount("");
-    setRecipient(null);
-    setPaymentMethod("");
-    setLastTransfer(null);
-  };
+};
+const logout = () => {
+  localStorage.removeItem("moeUser");
+  localStorage.removeItem("pendingTransfer");
+  setUser(null);
+  setLastTransfer(null);
+  setScreen("login");
+};
 
   if (!user) {
     return (
