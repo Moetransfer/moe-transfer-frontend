@@ -338,6 +338,31 @@ setTimeout(() => {
       </div>
     );
   }
+
+if (screen === "admin") {
+  return (
+    <div className="app">
+      <div className="card">
+        <button className="small-back" onClick={() => setScreen("home")}>
+          ← Back
+        </button>
+
+        <h1 className="title">👑 Admin Dashboard</h1>
+
+        <div className="recipient-item">
+          <div>
+            <div className="recipient-name">Admin access working ✅</div>
+            <div className="recipient-bank">Welcome DJ Moe</div>
+          </div>
+        </div>
+
+        <button className="yellow-btn" onClick={() => setScreen("home")}>
+          Back Home
+        </button>
+      </div>
+    </div>
+  );
+}
 if (screen === "activity") {
   return (
     <div className="app">
