@@ -31,9 +31,15 @@ useEffect(() => {
   const params = new URLSearchParams(window.location.search);
   const payment = params.get("payment");
 
-  if (payment === "success") {
-    setScreen("delivered");
+if (payment === "success") {
+  const pendingTransfer = localStorage.getItem("pendingTransfer");
+
+  if (pendingTransfer) {
+    setLastTransfer(JSON.parse(pendingTransfer));
   }
+
+  setScreen("delivered");
+}
 
   if (payment === "cancel") {
     alert("Payment cancelled");
@@ -166,6 +172,7 @@ useEffect(() => {
   const stripeData = await stripeRes.json();
 
   if (stripeData.url) {
+    localStorage.setItem("pendingTransfer", JSON.stringify(transaction));
     window.location.href = stripeData.url;
     return;
   }
