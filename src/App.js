@@ -20,7 +20,8 @@ function App() {
   const [newRecipientName, setNewRecipientName] = useState("");
   const [newRecipientAccount, setNewRecipientAccount] = useState("");
   const [newRecipientBank, setNewRecipientBank] = useState("");
- 
+  const [adminStats, setAdminStats] = useState(null); 
+
 useEffect(() => {
   const savedUser = localStorage.getItem("moeUser");
 
@@ -350,8 +351,29 @@ if (screen === "admin") {
         >
           ← Back
         </button>
-
+        
         <h1 className="title">👑 Admin Dashboard</h1>
+
+       <button
+  className="yellow-btn"
+  onClick={async () => {
+    const token = localStorage.getItem("token");
+
+    const res = await fetch(
+  "https://moe-transfer-backend-1.onrender.com/admin/stats",
+  {
+    headers: {
+     Authorization: `Bearer ${token}`,
+    },
+  }
+);
+
+    const data = await res.json();
+    setAdminStats(data);
+  }}
+>
+  Load Admin Stats
+</button>       
 
         <div className="recipient-item">
           <div>
@@ -359,7 +381,7 @@ if (screen === "admin") {
               Total Users
             </div>
             <div className="recipient-bank">
-              Coming Soon
+             {adminStats?.users || "Click load"}
             </div>
           </div>
         </div>
@@ -370,7 +392,7 @@ if (screen === "admin") {
               Total Transfers
             </div>
             <div className="recipient-bank">
-              Coming Soon
+             {adminStats?.transfers || "Click load"}
             </div>
           </div>
         </div>
