@@ -112,7 +112,23 @@ setUser(data.user);
       account: newRecipientAccount,
       bank: newRecipientBank,
     };
+    const token = localStorage.getItem("token");
 
+await fetch(
+  "https://moe-transfer-backend-1.onrender.com/recipients",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({
+      recipientName: newRecipientName,
+      bankName: newRecipientBank,
+      accountNumber: newRecipientAccount
+    })
+  }
+);
     setRecipients([newRec, ...recipients]);
     setRecipient(newRec);
     setNewRecipientName("");
