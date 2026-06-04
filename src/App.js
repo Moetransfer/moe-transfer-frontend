@@ -511,17 +511,17 @@ if (screen === "delivered") {
         <h1 className="success-title">Transfer Successful ✅</h1>
 
         <p style={{ textAlign: "center", fontSize: "22px" }}>
-          {lastTransfer.receiverName} has now received your transfer.
+          {lastTransfer?.receiverName || "Recipient"} has now received your transfer.
         </p>
 
         <div className="summary-box">
           <p className="summary-label">Receiver gets</p>
           <div className="summary-value">
-            {lastTransfer.symbol}{lastTransfer.received}
+            {lastTransfer?.symbol || "₦"}{lastTransfer?.received || "0.00"}
           </div>
 
           <p className="summary-label">Transfer ID</p>
-          <div className="reference">{lastTransfer.reference}</div>
+          <div className="reference">{lastTransfer?.reference || "Payment successful"}</div>
         </div>
 
         <button className="yellow-btn" onClick={() => setScreen("receipt")}>
