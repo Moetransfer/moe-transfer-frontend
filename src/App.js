@@ -94,8 +94,10 @@ if (payment === "cancel") {
       return;
     }
 
-    setUser(data.user);
-    localStorage.setItem("moeUser", JSON.stringify(data.user));
+    localStorage.setItem("token", data.token);
+localStorage.setItem("moeUser", JSON.stringify(data.user));
+
+setUser(data.user);
   };
 
   const addRecipient = () => {
@@ -189,8 +191,9 @@ setTimeout(() => {
 }, 3000);
   };
 
-const logout = () => {
+  const logout = () => {
   localStorage.removeItem("moeUser");
+  localStorage.removeItem("token");
   localStorage.removeItem("pendingTransfer");
   setUser(null);
   setLastTransfer(null);
