@@ -14,6 +14,7 @@ function App() {
   const [recipient, setRecipient] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("");
   const [lastTransfer, setLastTransfer] = useState(null);
+  const [recipients, setRecipients] = useState([]);
 const [transfers, setTransfers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [newRecipientName, setNewRecipientName] = useState("");
@@ -23,10 +24,39 @@ const [transfers, setTransfers] = useState([]);
 useEffect(() => {
   const savedUser = localStorage.getItem("moeUser");
 
-  if (savedUser) {
-    setUser(JSON.parse(savedUser));
+      setUser(JSON.parse(savedUser));
     setScreen("home");
-  }
+}
+ if (savedUser) {
+    const userData = JSON.parse(savedUser);
+
+    setUser(userData);
+    setScreen("home");
+
+    const token = localStorage.getItem("token");
+
+    fetch(
+      "https://moe-transfer-backend-1.onrender.com/recipients",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    )
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          setRecipients(
+            data.map(r => ({
+              initials: r.recipient_name.slice(0, 2).toUpperCase(),
+              name: r.recipient_name,
+              account: r.account_number,
+              bank: r.bank_name
+            }))
+          );
+        }
+      });
+}
 
   const params = new URLSearchParams(window.location.search);
   const payment = params.get("payment");
