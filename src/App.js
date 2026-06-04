@@ -308,20 +308,21 @@ setTimeout(() => {
             SEND
           </button>
 
-       <div className="bottom-nav">
-  <button className="nav-btn" onClick={() => setScreen("home")}>
-    🏠 Home
-  </button>
+      <div className="bottom-nav">
 
-  <button className="nav-btn" onClick={() => setScreen("activity")}>
-    ⇄ Activity
-  </button>
+<button className="nav-btn" onClick={() => setScreen("home")}>
+  🏠 Home
+</button>
 
-  <button className="nav-btn" onClick={() => setScreen("home")}>
-    🎁 Referrals
-  </button>
+<button className="nav-btn" onClick={() => setScreen("activity")}>
+  ⇄ Activity
+</button>
 
-{user?.email === "djmoe20@yahoo.com" && (
+<button className="nav-btn" onClick={() => setScreen("home")}>
+  🎁 Referrals
+</button>
+
+{user?.email?.toLowerCase() === "djmoe20@yahoo.com" && (
   <button
     className="nav-btn"
     onClick={() => setScreen("admin")}
@@ -329,6 +330,7 @@ setTimeout(() => {
     👑 Admin
   </button>
 )}
+
 </div>
 
           <button className="gray-btn" onClick={logout}>Logout</button>
