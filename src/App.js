@@ -255,8 +255,8 @@ setTimeout(() => {
             <input className="input" placeholder="Email address" value={email} onChange={(e) => setEmail(e.target.value)} />
             <input className="input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
-            <button className="yellow-btn" type="submit">
-     
+           
+       <button className="yellow-btn" type="submit">
          {authMode === "login" ? "Login" : "Create Account"}
             </button>
           </form>
