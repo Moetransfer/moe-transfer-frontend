@@ -437,13 +437,29 @@ if (screen === "admin") {
   {adminTransfers.map((t) => (
     <div className="recipient-item" key={t.id}>
       <div>
-        <div className="recipient-name">#{t.id} - €{t.amount}</div>
-        <div className="recipient-bank">
-          {t.receiver_name || t.receiverName || "Unknown Recipient"} • {t.bank_name || t.bankName || "Bank"}
-        </div>
-        <div className="recipient-bank">
-          {t.status} • {t.date}
-        </div>
+       <div className="recipient-name">
+  #{t.id} - €{Number(t.amount).toLocaleString()}
+</div>
+
+<div className="recipient-bank">
+  Receiver: {t.receiver_name || "Unknown Recipient"}
+</div>
+
+<div className="recipient-bank">
+  Bank: {t.bank_name || "Bank"}
+</div>
+
+<div className="recipient-bank">
+  Status: {t.status}
+</div>
+
+<div className="recipient-bank">
+  Date: {t.date}
+</div>
+
+<div className="recipient-bank">
+  Ref: {t.reference}
+</div>
       </div>
     </div>
   ))}
