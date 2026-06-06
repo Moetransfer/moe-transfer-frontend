@@ -21,6 +21,7 @@ function App() {
   const [newRecipientAccount, setNewRecipientAccount] = useState("");
   const [newRecipientBank, setNewRecipientBank] = useState("");
   const [adminStats, setAdminStats] = useState(null); 
+  const [adminTransfers, setAdminTransfers] = useState([]);
 
 useEffect(() => {
   const savedUser = localStorage.getItem("moeUser");
@@ -427,12 +428,26 @@ if (screen === "admin") {
     );
 
     const data = await res.json();
-    console.log(data);
+    setAdminTransfers(data.slice(0, 10));
   }}
 >
   Load Transfers
 </button>          
- 
+ {adminTransfers.map((t) => (
+  <div className="recipient-item" key={t.id}>
+    <div>
+      <div className="recipient-name">
+        #{t.id} - €{t.amount}
+      </div>
+      <div className="recipient-bank">
+        {t.receiver_name} • {t.bank_name}
+      </div>
+      <div className="recipient-bank">
+        {t.status} • {t.date}
+      </div>
+    </div>
+  </div>
+))}
         <button
           className="yellow-btn"
           onClick={() => setScreen("home")}
