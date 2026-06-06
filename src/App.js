@@ -432,22 +432,22 @@ if (screen === "admin") {
   }}
 >
   Load Transfers
-</button>          
- {adminTransfers.map((t) => (
-  <div className="recipient-item" key={t.id}>
-    <div>
-      <div className="recipient-name">
-        #{t.id} - €{t.amount}
-      </div>
-      <div className="recipient-bank">
-        {t.receiver_name} • {t.bank_name}
-      </div>
-      <div className="recipient-bank">
-        {t.status} • {t.date}
+</button>
+<div style={{ maxHeight: "250px", overflowY: "auto" }}>
+  {adminTransfers.map((t) => (
+    <div className="recipient-item" key={t.id}>
+      <div>
+        <div className="recipient-name">#{t.id} - €{t.amount}</div>
+        <div className="recipient-bank">
+          {t.receiver_name || t.receiverName || "Unknown Recipient"} • {t.bank_name || t.bankName || "Bank"}
+        </div>
+        <div className="recipient-bank">
+          {t.status} • {t.date}
+        </div>
       </div>
     </div>
-  </div>
-))}
+  ))}
+</div>          
         <button
           className="yellow-btn"
           onClick={() => setScreen("home")}
