@@ -363,9 +363,8 @@ if (screen === "admin") {
   "https://moe-transfer-backend-1.onrender.com/admin/stats",
   {
     headers: {
-     Authorization: `Bearer ${token}`,
-    },
-  }
+  Authorization: `Bearer ${token}`,
+},
 );
 
     const data = await res.json();
