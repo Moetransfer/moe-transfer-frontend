@@ -407,7 +407,32 @@ if (screen === "admin") {
             </div>
           </div>
         </div>
+        
+           <h3 style={{ color: "yellow", marginTop: "20px" }}>
+  Recent Transfers
+</h3>
 
+<button
+  className="yellow-btn"
+  onClick={async () => {
+    const token = localStorage.getItem("token");
+
+    const res = await fetch(
+      "https://moe-transfer-backend-1.onrender.com/admin/transfers",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    const data = await res.json();
+    console.log(data);
+  }}
+>
+  Load Transfers
+</button>          
+ 
         <button
           className="yellow-btn"
           onClick={() => setScreen("home")}
