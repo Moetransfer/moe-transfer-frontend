@@ -22,6 +22,7 @@ function App() {
   const [newRecipientBank, setNewRecipientBank] = useState("");
   const [adminStats, setAdminStats] = useState(null); 
   const [adminTransfers, setAdminTransfers] = useState([]);
+  const [selectedTransfer, setSelectedTransfer] = useState(null);
 
 useEffect(() => {
   const savedUser = localStorage.getItem("moeUser");
@@ -435,7 +436,11 @@ if (screen === "admin") {
 </button>
 <div style={{ maxHeight: "250px", overflowY: "auto" }}>
   {adminTransfers.map((t) => (
-    <div className="recipient-item" key={t.id}>
+    <div
+  className="recipient-item"
+  key={t.id}
+  onClick={() => setSelectedTransfer(t)}
+>
       <div>
        <div className="recipient-name">
   #{t.id} - €{Number(t.amount).toLocaleString()}
@@ -463,7 +468,26 @@ if (screen === "admin") {
       </div>
     </div>
   ))}
-</div>          
+</div>
+  {selectedTransfer && (
+  <div className="card" style={{ marginTop: "20px" }}>
+    <h3 style={{ color: "yellow" }}>Transfer Receipt</h3>
+
+    <p><strong>Reference:</strong> {selectedTransfer.reference}</p>
+    <p><strong>Amount:</strong> €{selectedTransfer.amount}</p>
+    <p><strong>Receiver:</strong> {selectedTransfer.receiver_name}</p>
+    <p><strong>Bank:</strong> {selectedTransfer.bank_name}</p>
+    <p><strong>Status:</strong> {selectedTransfer.status}</p>
+    <p><strong>Date:</strong> {selectedTransfer.date}</p>
+
+    <button
+      className="yellow-btn"
+      onClick={() => setSelectedTransfer(null)}
+    >
+      Close Receipt
+    </button>
+  </div>
+)}        
         <button
           className="yellow-btn"
           onClick={() => setScreen("home")}
