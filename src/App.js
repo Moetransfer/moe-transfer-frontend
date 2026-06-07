@@ -484,12 +484,13 @@ if (screen === "admin") {
     <p><strong>Status:</strong> {selectedTransfer.status}</p>
     <p><strong>Date:</strong> {selectedTransfer.date}</p>
 
-    <button
-      className="yellow-btn"
-      onClick={() => setSelectedTransfer(null)}
-    >
-      Close Receipt
-    </button>
+   <button
+  className="yellow-btn"
+  onClick={() => setSelectedTransfer(null)}
+>
+  Close Receipt
+</button>
+
 <button
   className="yellow-btn"
   onClick={() => {
@@ -510,7 +511,8 @@ if (screen === "admin") {
   }}
 >
   Download PDF
-</button>
+</button>>
+
   </div>
 )}        
         <button
