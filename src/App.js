@@ -1,3 +1,4 @@
+import jsPDF from "jspdf";
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
@@ -489,6 +490,27 @@ if (screen === "admin") {
     >
       Close Receipt
     </button>
+<button
+  className="yellow-btn"
+  onClick={() => {
+    const doc = new jsPDF();
+
+    doc.setFontSize(18);
+    doc.text("Moe Transfer Receipt", 20, 20);
+
+    doc.setFontSize(12);
+    doc.text(`Reference: ${selectedTransfer.reference}`, 20, 40);
+    doc.text(`Amount: €${selectedTransfer.amount}`, 20, 50);
+    doc.text(`Receiver: ${selectedTransfer.receiver_name}`, 20, 60);
+    doc.text(`Bank: ${selectedTransfer.bank_name}`, 20, 70);
+    doc.text(`Status: ${selectedTransfer.status}`, 20, 80);
+    doc.text(`Date: ${selectedTransfer.date}`, 20, 90);
+
+    doc.save(`receipt-${selectedTransfer.reference}.pdf`);
+  }}
+>
+  Download PDF
+</button>
   </div>
 )}        
         <button
