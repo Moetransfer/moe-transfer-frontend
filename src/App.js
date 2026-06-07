@@ -439,7 +439,10 @@ if (screen === "admin") {
     <div
   className="recipient-item"
   key={t.id}
-  onClick={() => setSelectedTransfer(t)}
+ onClick={() => {
+  console.log("clicked", t);
+  setSelectedTransfer(t);
+}}
 >
       <div>
        <div className="recipient-name">
