@@ -247,7 +247,16 @@ setTimeout(() => {
     return (
       <div className="app">
         <div className="card">
-          <h1 className="title">Moe Transfer</h1>
+<img
+  src="/moe-transfer-logo.png"
+  alt="Moe Transfer"
+  style={{
+    width: "140px",
+    display: "block",
+    margin: "0 auto 20px"
+  }}
+/>          
+<h1 className="title">Moe Transfer</h1>
           <p className="subtitle">Fast EUR to NGN money transfer</p>
 
           <form onSubmit={authMode === "login" ? login : signup}>
