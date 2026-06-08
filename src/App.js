@@ -252,7 +252,7 @@ setTimeout(() => {
   src="/moe-transfer-logo-new.png"
   alt="Moe Transfer"
   style={{
-    width: "220px",
+   width: "350px",
     display: "block",
     margin: "0 auto 20px"
   }}
