@@ -249,7 +249,7 @@ setTimeout(() => {
         <div className="card">
 
 <img
-  src="/moe-transfer-logo.png"
+  src="/moe-transfer-logo-new.png"
   alt="Moe Transfer"
   style={{
     width: "220px",
