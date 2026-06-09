@@ -290,7 +290,7 @@ setTimeout(() => {
           <h1 className="title">Moe Transfer</h1>
 
           <div className="home-top">
-            <div className="avatar">{user.name?.charAt(0)?.toUpperCase() || "M"}</div>
+            <div className="avatar">{user?.name?.charAt(0)?.toUpperCase() || "M"}</div>
             <div className="reward">€15 🎁</div>
           </div>
 
