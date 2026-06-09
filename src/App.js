@@ -848,9 +848,23 @@ if (screen === "delivered") {
 <div className="summary-value">{lastTransfer.time}</div>
           </div>
 
-         <button
+        <button
   className="yellow-btn"
-  onClick={() => window.print()}
+  onClick={() => {
+    const doc = new jsPDF();
+
+    doc.setFontSize(18);
+    doc.text("Moe Transfer Receipt", 20, 20);
+
+    doc.setFontSize(12);
+    doc.text(`Reference: ${lastTransfer.reference}`, 20, 40);
+    doc.text(`Amount: €${lastTransfer.amount}`, 20, 50);
+    doc.text(`Status: ${lastTransfer.status}`, 20, 60);
+    doc.text(`Date: ${lastTransfer.date}`, 20, 70);
+    doc.text(`Time: ${lastTransfer.time}`, 20, 80);
+
+    doc.save(`receipt-${lastTransfer.reference}.pdf`);
+  }}
 >
   📄 Download Receipt
 </button>
