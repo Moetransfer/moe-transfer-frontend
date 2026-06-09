@@ -866,7 +866,7 @@ if (screen === "delivered") {
     doc.save(`receipt-${lastTransfer.reference}.pdf`);
   }}
 >
-  📄 Download Receipt
+  Download Receipt
 </button>
 
 <button
