@@ -507,30 +507,31 @@ if (screen === "admin") {
   onClick={async () => {
     const doc = new jsPDF();
 
-    const logo = new Image();
-    logo.src = "/moe-transfer-logo.png";
+   const logo = new Image();
 
-    logo.onload = () => {
-      doc.addImage(logo, "PNG", 55, 10, 100, 35);
+logo.onload = () => {
+  doc.addImage(logo, "PNG", 55, 10, 100, 35);
 
-      doc.setFontSize(18);
-      doc.text("Transfer Receipt", 20, 60);
+  doc.setFontSize(18);
+  doc.text("Transfer Receipt", 20, 60);
 
-      doc.setFontSize(12);
-      doc.text(`Reference: ${selectedTransfer.reference}`, 20, 80);
-      doc.text(`Amount: €${selectedTransfer.amount}`, 20, 90);
-      doc.text(`Receiver: ${selectedTransfer.receiver_name}`, 20, 100);
-      doc.text(`Bank: ${selectedTransfer.bank_name}`, 20, 110);
-      doc.text(`Status: ${selectedTransfer.status}`, 20, 120);
-      doc.text(`Date: ${selectedTransfer.date}`, 20, 130);
+  doc.setFontSize(12);
+  doc.text(`Reference: ${selectedTransfer.reference}`, 20, 80);
+  doc.text(`Amount: €${selectedTransfer.amount}`, 20, 90);
+  doc.text(`Receiver: ${selectedTransfer.receiver_name}`, 20, 100);
+  doc.text(`Bank: ${selectedTransfer.bank_name}`, 20, 110);
+  doc.text(`Status: ${selectedTransfer.status}`, 20, 120);
+  doc.text(`Date: ${selectedTransfer.date}`, 20, 130);
 
-      doc.text("Fast • Secure • Reliable", 20, 155);
+  doc.text("Fast • Secure • Reliable", 20, 155);
 
-      doc.save(`receipt-${selectedTransfer.reference}.pdf`);
-    };
-  }}
+  doc.save(`receipt-${selectedTransfer.reference}.pdf`);
+};
+
+logo.src = "/moe-transfer-logo.png";
+}}
 >
-  Download PDF
+Download PDF
 </button>
 
   </div>
