@@ -370,7 +370,7 @@ if (screen === "admin") {
 
        <button
   className="yellow-btn"
-  onClick={async () => {
+    onClick={async () => {
     const token = localStorage.getItem("token");
 
     const res = await fetch(
@@ -504,25 +504,34 @@ if (screen === "admin") {
 
 <button
   className="yellow-btn"
-  onClick={() => {
+  onClick={async () => {
     const doc = new jsPDF();
 
-    doc.setFontSize(18);
-    doc.text("Moe Transfer Receipt", 20, 20);
+    const logo = new Image();
+    logo.src = "/moe-transfer-logo.png";
 
-    doc.setFontSize(12);
-    doc.text(`Reference: ${selectedTransfer.reference}`, 20, 40);
-    doc.text(`Amount: €${selectedTransfer.amount}`, 20, 50);
-    doc.text(`Receiver: ${selectedTransfer.receiver_name}`, 20, 60);
-    doc.text(`Bank: ${selectedTransfer.bank_name}`, 20, 70);
-    doc.text(`Status: ${selectedTransfer.status}`, 20, 80);
-    doc.text(`Date: ${selectedTransfer.date}`, 20, 90);
+    logo.onload = () => {
+      doc.addImage(logo, "PNG", 55, 10, 100, 35);
 
-    doc.save(`receipt-${selectedTransfer.reference}.pdf`);
+      doc.setFontSize(18);
+      doc.text("Transfer Receipt", 20, 60);
+
+      doc.setFontSize(12);
+      doc.text(`Reference: ${selectedTransfer.reference}`, 20, 80);
+      doc.text(`Amount: €${selectedTransfer.amount}`, 20, 90);
+      doc.text(`Receiver: ${selectedTransfer.receiver_name}`, 20, 100);
+      doc.text(`Bank: ${selectedTransfer.bank_name}`, 20, 110);
+      doc.text(`Status: ${selectedTransfer.status}`, 20, 120);
+      doc.text(`Date: ${selectedTransfer.date}`, 20, 130);
+
+      doc.text("Fast • Secure • Reliable", 20, 155);
+
+      doc.save(`receipt-${selectedTransfer.reference}.pdf`);
+    };
   }}
 >
   Download PDF
-</button>>
+</button>
 
   </div>
 )}        
