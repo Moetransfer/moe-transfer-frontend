@@ -488,12 +488,13 @@ if (screen === "admin") {
   <div className="card" style={{ marginTop: "20px" }}>
     <h3 style={{ color: "yellow" }}>Transfer Receipt</h3>
 
-    <p><strong>Reference:</strong> {selectedTransfer.reference}</p>
-    <p><strong>Amount:</strong> €{selectedTransfer.amount}</p>
-    <p><strong>Receiver:</strong> {selectedTransfer.receiver_name}</p>
-    <p><strong>Bank:</strong> {selectedTransfer.bank_name}</p>
-    <p><strong>Status:</strong> {selectedTransfer.status}</p>
-    <p><strong>Date:</strong> {selectedTransfer.date}</p>
+   <p><strong>Reference:</strong> {selectedTransfer.reference}</p>
+<p><strong>Amount Sent:</strong> €{selectedTransfer.amount}</p>
+<p><strong>Amount Received:</strong> ₦{selectedTransfer.received}</p>
+<p><strong>Receiver:</strong> {selectedTransfer.receiver_name}</p>
+<p><strong>Bank:</strong> {selectedTransfer.bank_name}</p>
+<p><strong>Status:</strong> {selectedTransfer.status}</p>
+<p><strong>Date:</strong> {selectedTransfer.date}</p>
 
    <button
   className="yellow-btn"
@@ -517,13 +518,14 @@ logo.onload = () => {
 
   doc.setFontSize(12);
   doc.text(`Reference: ${selectedTransfer.reference}`, 20, 80);
-  doc.text(`Amount: €${selectedTransfer.amount}`, 20, 90);
-  doc.text(`Receiver: ${selectedTransfer.receiver_name}`, 20, 100);
-  doc.text(`Bank: ${selectedTransfer.bank_name}`, 20, 110);
-  doc.text(`Status: ${selectedTransfer.status}`, 20, 120);
-  doc.text(`Date: ${selectedTransfer.date}`, 20, 130);
+  doc.text(`Amount Sent: €${selectedTransfer.amount}`, 20, 90);
+doc.text(`Amount Received: ₦${selectedTransfer.received}`, 20, 100);
+doc.text(`Receiver: ${selectedTransfer.receiver_name}`, 20, 110);
+doc.text(`Bank: ${selectedTransfer.bank_name}`, 20, 120);
+doc.text(`Status: ${selectedTransfer.status}`, 20, 130);
+doc.text(`Date: ${selectedTransfer.date}`, 20, 140);
 
-  doc.text("Fast • Secure • Reliable", 20, 155);
+ doc.text("Fast • Secure • Reliable", 20, 165);
 
   doc.save(`receipt-${selectedTransfer.reference}.pdf`);
 };
