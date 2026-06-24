@@ -860,11 +860,12 @@ if (screen === "delivered") {
     doc.text("Moe Transfer Receipt", 20, 20);
 
     doc.setFontSize(12);
-    doc.text(`Reference: ${lastTransfer.reference}`, 20, 40);
-    doc.text(`Amount: €${lastTransfer.amount}`, 20, 50);
-    doc.text(`Status: ${lastTransfer.status}`, 20, 60);
-    doc.text(`Date: ${lastTransfer.date}`, 20, 70);
-    doc.text(`Time: ${lastTransfer.time}`, 20, 80);
+   doc.text(`Reference: ${lastTransfer.reference}`, 20, 40);
+doc.text(`Amount Sent: €${lastTransfer.amount}`, 20, 50);
+doc.text(`Amount Received: ₦${lastTransfer.received}`, 20, 60);
+doc.text(`Status: ${lastTransfer.status}`, 20, 70);
+doc.text(`Date: ${lastTransfer.date}`, 20, 80);
+doc.text(`Time: ${lastTransfer.time}`, 20, 90);
 
     doc.save(`receipt-${lastTransfer.reference}.pdf`);
   }}
